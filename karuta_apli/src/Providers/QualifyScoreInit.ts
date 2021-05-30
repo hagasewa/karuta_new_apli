@@ -26,6 +26,7 @@ export type QualifyScoreType = {
   HigSchoolTeam: ClassType;
 };
 
+
 export const QualifyScoreInit: QualifyScoreType = {
   HigSchoolTeam: {
     ClassName: "高学年団体",
