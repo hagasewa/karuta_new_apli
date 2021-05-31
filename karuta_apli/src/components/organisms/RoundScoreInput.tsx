@@ -7,8 +7,9 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import { useState, VFC } from "react";
-import { CompetitionType, RoundType } from "../../Providers/QualifyScoreInit";
+import { useContext, useState, VFC } from "react";
+import { CompetitionType,  ScoreValueElementType } from "../../Providers/QualifyScoreInit";
+import { QualifyScoreContext } from "../../Providers/QualifyScoreProvider";
 import { CompetitionScoreInput } from "../molecules/CompetitionScoreInput";
 
 const useStyles = makeStyles((theme) =>
@@ -49,8 +50,18 @@ const useStyles = makeStyles((theme) =>
     },
   })
 );
-export const RoundScoreInput: VFC<RoundType> = (props) => {
-  const { Competition, RoundNumber } = props
+
+type Props ={
+  Competition:CompetitionType[];
+  RoundNumber:string;
+  ScoreValueElement:ScoreValueElementType
+
+}
+export const RoundScoreInput: VFC<Props> = (props) => {
+
+  const {QualifyScore} = useContext(QualifyScoreContext)
+  const { Competition, RoundNumber, ScoreValueElement} = props
+  const {classEl,blockEl,roundEl}= ScoreValueElement
   const classes = useStyles();
 
   //奇数行と偶数行で背景色を変更
@@ -74,9 +85,10 @@ export const RoundScoreInput: VFC<RoundType> = (props) => {
   }
 
   const onClickWriteScore: () => void=()=>{
-    console.log("CompetitionValue0",CompetitionValue0)
-    console.log("CompetitionValue0",CompetitionValue1)
-    console.log("CompetitionValue0",CompetitionValue2)
+    QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition[0]=CompetitionValue0
+    QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition[1]=CompetitionValue1
+    QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition[2]=CompetitionValue2
+    console.log("QualifyScore:",QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition)
   }
 /* 予選得点入力の1回戦から5回戦までのラウンドフォームを表示 */
   return (

@@ -1,7 +1,7 @@
 /* 対戦フォーム入力 */
 
 import { Checkbox, createStyles, Grid, makeStyles, Typography } from "@material-ui/core";
-import { ChangeEvent, useState, VFC } from "react";
+import { ChangeEvent,  VFC } from "react";
 import { CompetitionType } from "../../Providers/QualifyScoreInit";
 
 type Props = {

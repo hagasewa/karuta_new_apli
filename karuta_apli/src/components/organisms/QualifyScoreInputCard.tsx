@@ -2,7 +2,7 @@
 
 import { Box, Card, CardHeader, createStyles, Divider, makeStyles, Theme, } from "@material-ui/core";
 import { RoundScoreInput } from "./RoundScoreInput";
-import { BlockType } from "../../Providers/QualifyScoreInit"
+import { RoundType, ScoreValueElementType } from "../../Providers/QualifyScoreInit"
 import React, { VFC } from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,9 +22,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }))
 
-export const QualifyScoreInputCard: VFC<BlockType> = (props) => {
+  type Props ={
+    Round:RoundType[];
+    BlockName:string;
+    ScoreValueElement:ScoreValueElementType
+  }
+export const QualifyScoreInputCard: VFC<Props> = (props) => {
   const classes = useStyles()
-  const { Round, BlockName } = props
+  const { Round, BlockName ,ScoreValueElement} = props
 
   /* 得点入力のブロックカードを表示 */
   return (
@@ -36,7 +41,7 @@ export const QualifyScoreInputCard: VFC<BlockType> = (props) => {
         {Round.map((round, index) => (
          <React.Fragment key={index} >
             <Box flexGrow={1}  className={classes.roundBox}>
-              <RoundScoreInput {...round} />
+              <RoundScoreInput {...round} ScoreValueElement={{...ScoreValueElement,roundEl:index}}/>
             </Box>
             <Divider orientation="vertical" flexItem />
          </React.Fragment >

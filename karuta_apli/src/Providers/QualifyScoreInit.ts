@@ -22,13 +22,18 @@ export type ClassType = {
   Block: BlockType[]
 }
 
-export type QualifyScoreType = {
-  HigSchoolTeam: ClassType;
-};
+export type QualifyScoreType =  ClassType[];
+
+export type ScoreValueElementType={
+  classEl:number ;
+  blockEl:number ;
+  roundEl:number ;
+}
 
 
-export const QualifyScoreInit: QualifyScoreType = {
-  HigSchoolTeam: {
+
+
+export const QualifyScoreInit: QualifyScoreType = [{
     ClassName: "高学年団体",
     Block: [{
       BlockName: "Aブロック",
@@ -70,7 +75,7 @@ export const QualifyScoreInit: QualifyScoreType = {
       Round: [{
         RoundNumber: "1回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
+          { name1: "チームA", point1: 4, ma1: false, name2: "チームB", point2: 0, ma2: false, },
           { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
           { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
       }, {
@@ -98,10 +103,8 @@ export const QualifyScoreInit: QualifyScoreType = {
           { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
           { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
       }]
-
-
-    }]
-  }
+    }]}
+  ]
   /* ,
         HighSchoolSingle: {
         ClassName: "高学年個人"
@@ -114,4 +117,5 @@ export const QualifyScoreInit: QualifyScoreType = {
       }
    */
 
-}
+
+
