@@ -40,33 +40,33 @@ export const QualifyScoreInit: QualifyScoreType = [{
       Round: [{
         RoundNumber: "1回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富A", point1: 0, ma1: false, name2: "伸栄A", point2: 0, ma2: false, },
+          { name1: "若松E", point1: 0, ma1: false, name2: "牛沼C", point2: 0, ma2: false, },
+          { name1: "北秋津C", point1: 0, ma1: false, name2: "小手指E", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "2回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富A", point1: 0, ma1: false, name2: "若松E", point2: 0, ma2: false, },
+          { name1: "伸栄A", point1: 0, ma1: false, name2: "北秋津C", point2: 0, ma2: false, },
+          { name1: "牛沼C", point1: 0, ma1: false, name2: "小手指E", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "3回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富A", point1: 0, ma1: false, name2: "牛沼C", point2: 0, ma2: false, },
+          { name1: "伸栄A", point1: 0, ma1: false, name2: "小手指E", point2: 0, ma2: false, },
+          { name1: "若松E", point1: 0, ma1: false, name2: "北秋津C", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "4回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富A", point1: 0, ma1: false, name2: "北秋津C", point2: 0, ma2: false, },
+          { name1: "伸栄A", point1: 0, ma1: false, name2: "牛沼C", point2: 0, ma2: false, },
+          { name1: "若松E", point1: 0, ma1: false, name2: "小手指E", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "5回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 10, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富A", point1: 0, ma1: false, name2: "小手指E", point2: 0, ma2: false, },
+          { name1: "伸栄A", point1: 0, ma1: false, name2: "若松E", point2: 0, ma2: false, },
+          { name1: "牛沼C", point1: 0, ma1: false, name2: "北秋津C", point2: 0, ma2: false, }]
       }]
 
 
@@ -75,33 +75,33 @@ export const QualifyScoreInit: QualifyScoreType = [{
       Round: [{
         RoundNumber: "1回戦",
         Competition: [
-          { name1: "チームA", point1: 4, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富B", point1: 4, ma1: false, name2: "小手指D", point2: 0, ma2: false, },
+          { name1: "所沢B", point1: 0, ma1: false, name2: "若松F", point2: 0, ma2: false, },
+          { name1: "牛沼A", point1: 0, ma1: false, name2: "明峰C", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "2回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富B", point1: 0, ma1: false, name2: "所沢B", point2: 0, ma2: false, },
+          { name1: "小手指D", point1: 0, ma1: false, name2: "牛沼A", point2: 0, ma2: false, },
+          { name1: "若松F", point1: 0, ma1: false, name2: "明峰C", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "3回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富B", point1: 0, ma1: false, name2: "若松F", point2: 0, ma2: false, },
+          { name1: "小手指D", point1: 0, ma1: false, name2: "明峰C", point2: 0, ma2: false, },
+          { name1: "所沢B", point1: 0, ma1: false, name2: "牛沼A", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "4回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富B", point1: 0, ma1: false, name2: "牛沼A", point2: 0, ma2: false, },
+          { name1: "小手指D", point1: 0, ma1: false, name2: "若松F", point2: 0, ma2: false, },
+          { name1: "所沢B", point1: 0, ma1: false, name2: "明峰C", point2: 0, ma2: false, }]
       }, {
         RoundNumber: "5回戦",
         Competition: [
-          { name1: "チームA", point1: 0, ma1: false, name2: "チームB", point2: 0, ma2: false, },
-          { name1: "チームC", point1: 0, ma1: false, name2: "チームD", point2: 0, ma2: false, },
-          { name1: "チームE", point1: 0, ma1: false, name2: "チームF", point2: 0, ma2: false, }]
+          { name1: "西富B", point1: 0, ma1: false, name2: "明峰C", point2: 0, ma2: false, },
+          { name1: "小手指D", point1: 0, ma1: false, name2: "所沢B", point2: 0, ma2: false, },
+          { name1: "若松F", point1: 0, ma1: false, name2: "牛沼A", point2: 0, ma2: false, }]
       }]
     }]}
   ]
