@@ -7,8 +7,8 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import { VFC } from "react";
-import { RoundType } from "../../Providers/QualifyScoreInit";
+import { useState, VFC } from "react";
+import { CompetitionType, RoundType } from "../../Providers/QualifyScoreInit";
 import { CompetitionScoreInput } from "../molecules/CompetitionScoreInput";
 
 const useStyles = makeStyles((theme) =>
@@ -52,7 +52,32 @@ const useStyles = makeStyles((theme) =>
 export const RoundScoreInput: VFC<RoundType> = (props) => {
   const { Competition, RoundNumber } = props
   const classes = useStyles();
+
+  //奇数行と偶数行で背景色を変更
   const InputRow = [classes.InputRowEven, classes.InputRowOdd];
+
+  
+  const [CompetitionValue0, setCompetitionValue0] = useState<CompetitionType>(Competition[0])
+  const [CompetitionValue1, setCompetitionValue1] = useState<CompetitionType>(Competition[1])
+  const [CompetitionValue2, setCompetitionValue2] = useState<CompetitionType>(Competition[2])
+ // const { name1, point1, ma1, name2, point2, ma2 } = CompetitionValue
+
+ //子コンポーネントで変更された対戦スコアステートを変更する
+  const onChangeCompetitionScore0=(Competition:CompetitionType)=>{
+    setCompetitionValue0(Competition)
+  }
+  const onChangeCompetitionScore1=(Competition:CompetitionType)=>{
+    setCompetitionValue1(Competition)
+  }
+  const onChangeCompetitionScore2=(Competition:CompetitionType)=>{
+    setCompetitionValue2(Competition)
+  }
+
+  const onClickWriteScore: () => void=()=>{
+    console.log("CompetitionValue0",CompetitionValue0)
+    console.log("CompetitionValue0",CompetitionValue1)
+    console.log("CompetitionValue0",CompetitionValue2)
+  }
 /* 予選得点入力の1回戦から5回戦までのラウンドフォームを表示 */
   return (
     <>
@@ -65,7 +90,7 @@ export const RoundScoreInput: VFC<RoundType> = (props) => {
       >
         <Typography variant="h6">{RoundNumber}</Typography>
 
-        <Button variant="contained" className={classes.EntryButton}>
+        <Button variant="contained" className={classes.EntryButton} onClick={onClickWriteScore}>
           登録
         </Button>
       </Grid>
@@ -77,11 +102,16 @@ export const RoundScoreInput: VFC<RoundType> = (props) => {
           <Grid item xs={3}>ま札</Grid>
         </Grid>
       </div>
-      {Competition.map((competition,index) => (
-        <div className={InputRow[(index+1)%2]} key={index}>
-          <CompetitionScoreInput {...competition} />
+        <div className={InputRow[1]}>
+          <CompetitionScoreInput {...CompetitionValue0} onChangeCompetitionScore={onChangeCompetitionScore0}/>
         </div>
-      ))}
+        <div className={InputRow[0]}>
+          <CompetitionScoreInput {...CompetitionValue1} onChangeCompetitionScore={onChangeCompetitionScore1}/>
+        </div>
+        <div className={InputRow[1]}>
+          <CompetitionScoreInput {...CompetitionValue2} onChangeCompetitionScore={onChangeCompetitionScore2}/>
+        </div>
+
     </>
   );
 };

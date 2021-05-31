@@ -4,6 +4,17 @@ import { Checkbox, createStyles, Grid, makeStyles, Typography } from "@material-
 import { ChangeEvent, useState, VFC } from "react";
 import { CompetitionType } from "../../Providers/QualifyScoreInit";
 
+type Props = {
+  name1: string;
+  point1: number;
+  ma1: boolean;
+  name2: string;
+  point2: number;
+  ma2: boolean;
+  onChangeCompetitionScore:(Competition: CompetitionType) => void;
+
+
+}
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -15,24 +26,23 @@ const useStyles = makeStyles((theme) =>
       borderRadius: "3px",
     }
   }))
-export const CompetitionScoreInput: VFC<CompetitionType> = (props) => {
-  const [CompetitionValue, setCompetitionValue] = useState<CompetitionType>(props)
-  const { name1, point1, ma1, name2, point2, ma2 } = CompetitionValue
+export const CompetitionScoreInput: VFC<Props> = (props) => {
+  const { name1, point1, ma1, name2, point2, ma2, onChangeCompetitionScore } = props
   const classes = useStyles()
 
   const onChangePoint1 = (e: ChangeEvent<HTMLInputElement>) => {
-    setCompetitionValue({ ...CompetitionValue, point1: Number(e.target.value) })
+    onChangeCompetitionScore({ name1, ma1, name2, point2, ma2, point1: Number(e.target.value) })
   }
   const onChangePoint2 = (e: ChangeEvent<HTMLInputElement>) => {
-    setCompetitionValue({ ...CompetitionValue, point2: Number(e.target.value) })
+    onChangeCompetitionScore({ name1, ma1, name2, point1, ma2, point2: Number(e.target.value) })
   }
   const onChangeMa1 = (e: ChangeEvent<HTMLInputElement>) => {
-    setCompetitionValue({ ...CompetitionValue, ma1: e.target.checked, ma2: !(e.target.checked) })
+    onChangeCompetitionScore({ name1, point1, name2, point2, ma1: e.target.checked, ma2: !(e.target.checked) })
   }
   const onChangeMa2 = (e: ChangeEvent<HTMLInputElement>) => {
-    setCompetitionValue({ ...CompetitionValue, ma2: e.target.checked, ma1: !(e.target.checked) })
+    onChangeCompetitionScore({ name1, point1, name2, point2, ma2: e.target.checked, ma1: !(e.target.checked) })
   }
-/* 予選得点入力の対戦ごとの入力を表示 */
+  /* 予選得点入力の対戦ごとの入力を表示 */
   return (
     <>
       <Grid container alignItems="center">
