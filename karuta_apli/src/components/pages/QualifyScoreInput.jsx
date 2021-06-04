@@ -1,12 +1,11 @@
 /* 予選得点入力ページ  class*/
 
-import { useContext } from "react";
-import { QualifyScoreContext } from "../../Providers/QualifyScoreProvider";
+import { QualifyPlayingField } from "../../Providers/QualifyScoreInit";
 import { QualifyScoreInputCard } from "../organisms/QualifyScoreInputCard";
 
 export const QualifyScoreInput = () => {
-  const { QualifyScore } = useContext(QualifyScoreContext);
-  const HighSchooleteam = QualifyScore[0];
+
+  const HighSchooleteam = QualifyPlayingField[0];
 
   /* 予選得点入力コンポーネント 　このコンポーネントでは、高学年団体・個人　低学年団体・個人のクラスを切り替える*/
   return (

@@ -2,7 +2,7 @@
 
 import { Checkbox, createStyles, Grid, makeStyles, Typography } from "@material-ui/core";
 import { ChangeEvent,  VFC } from "react";
-import { CompetitionType } from "../../Providers/QualifyScoreInit";
+import { CompetitionScoreType } from "../organisms/RoundScoreInput";
 
 type Props = {
   name1: string;
@@ -11,7 +11,7 @@ type Props = {
   name2: string;
   point2: number;
   ma2: boolean;
-  onChangeCompetitionScore:(Competition: CompetitionType) => void;
+  onChangeCompetitionScore:(Competition: CompetitionScoreType) => void;
 
 
 }

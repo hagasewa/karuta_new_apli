@@ -57,7 +57,7 @@ export const ScoreSheet = () => {
         <Grid item xs={6}><Typography variant="h4">第30回「彩の国21世紀」郷土かるた所沢大会</Typography> </Grid>
         <Grid item xs={6}>
           <Grid container justify="flex-end"
-            alignItems="center" spacing={2} md={12}>
+            alignItems="center" spacing={2}>
             <Grid item><Paper className={classes.SwitchOn}>予選</Paper></Grid>
             <Grid item><Paper className={classes.SwitchOff}>決勝</Paper></Grid>
             <Grid item><Paper>
@@ -73,16 +73,16 @@ export const ScoreSheet = () => {
       </Grid>
       <Grid container className={classes.headermenu} alignItems="baseline"
       >
-        <Grid container alignItems="center" justify="space-evenly" className={classes.activeheademenu} xs={3}><img src="../../HighGroup.png" alt="高学年団体" />
+        <Grid container alignItems="center" justify="space-evenly" className={classes.activeheademenu} item xs={3}><img src="../../HighGroup.png" alt="高学年団体" />
           <Hidden xsDown><Typography variant="subtitle1">高学年団体</Typography></Hidden>
         </Grid>
-        <Grid container alignItems="center" justify="space-evenly" xs={3}><img src="../../HighPrivate.png" alt="高学年団体" />
+        <Grid container alignItems="center" justify="space-evenly" item xs={3}><img src="../../HighPrivate.png" alt="高学年団体" />
           <Hidden xsDown><Typography variant="subtitle1">高学年個人</Typography></Hidden>
         </Grid>
-        <Grid container alignItems="center" justify="space-evenly" xs={3}><img src="../../LowGroup.png" alt="高学年団体" />
+        <Grid container alignItems="center" justify="space-evenly" item xs={3}><img src="../../LowGroup.png" alt="高学年団体" />
           <Hidden xsDown><Typography variant="subtitle1">低学年団体</Typography></Hidden>
         </Grid>
-        <Grid container alignItems="center" justify="space-evenly" xs={3}><img src="../../LowPrivate.png" alt="高学年団体" />
+        <Grid container alignItems="center" justify="space-evenly" item xs={3}><img src="../../LowPrivate.png" alt="高学年団体" />
           <Hidden xsDown><Typography variant="subtitle1">低学年個人</Typography></Hidden>
         </Grid>
       </Grid>

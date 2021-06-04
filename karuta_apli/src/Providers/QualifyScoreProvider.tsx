@@ -1,22 +1,22 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
-import {QualifyScoreInit,QualifyScoreType} from "./QualifyScoreInit"
+import {teamDataListInit,teamDataListType} from "./QualifyScoreInit"
 
-export type QualifyScoreContextType={
-  QualifyScore:QualifyScoreType;
-  setQualifyScore:Dispatch<SetStateAction<QualifyScoreType>>
+export type teamDataListContextType={
+  teamDataList:teamDataListType;
+  setTeamDataList:Dispatch<SetStateAction<teamDataListType>>
 }
 
-export const QualifyScoreContext = createContext<QualifyScoreContextType>( {} as QualifyScoreContextType)
+export const teamDataListContext = createContext<teamDataListContextType>( {} as teamDataListContextType)
 
 export const QualifyScoreProvider= (props: { children: ReactNode })=>{
-  const [QualifyScore ,setQualifyScore]= useState<QualifyScoreType>(QualifyScoreInit)
+  const [teamDataList ,setTeamDataList]= useState<teamDataListType>(teamDataListInit)
 
   const {children} = props
 
   return (
-    <QualifyScoreContext.Provider value={{QualifyScore ,setQualifyScore}}>
+    <teamDataListContext.Provider value={{teamDataList ,setTeamDataList}}>
       {children}
-    </QualifyScoreContext.Provider>
+    </teamDataListContext.Provider>
   )
 }
 

@@ -8,8 +8,6 @@ import { ScoreSheet } from "../components/pages/ScoreSheet";
 import { Login } from "../components/pages/Login";
 import { Management } from "../components/templates/Management ";
 import { Page404 } from "../components/pages/Page404";
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
 import { useIsSessionToken } from "../fooks/useIsSessionToken";
 
 const routers = [
@@ -42,9 +40,7 @@ const routers = [
 
 
 export const Router = () => {
-  const {token} = useContext(AuthContext) 
   const IsSessionToken=useIsSessionToken()
-  console.log(token)
   return (
     <Switch>
       <Route exact path="/">

@@ -7,9 +7,8 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import { useContext, useState, VFC } from "react";
-import { CompetitionType,  ScoreValueElementType } from "../../Providers/QualifyScoreInit";
-import { QualifyScoreContext } from "../../Providers/QualifyScoreProvider";
+import { useState, VFC } from "react";
+import { CompetitionType, ScoreValueElementType, teamDataListInit } from "../../Providers/QualifyScoreInit";
 import { CompetitionScoreInput } from "../molecules/CompetitionScoreInput";
 
 const useStyles = makeStyles((theme) =>
@@ -51,46 +50,80 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-type Props ={
-  Competition:CompetitionType[];
-  RoundNumber:string;
-  ScoreValueElement:ScoreValueElementType
+type Props = {
+  Competition: CompetitionType[];
+  RoundNumber: string;
+  ScoreValueElement: ScoreValueElementType
+}
 
+export type CompetitionScoreType = {
+  name1: string;
+  point1: number;
+  ma1: boolean;
+  name2: string;
+  point2: number;
+  ma2: boolean;
 }
 export const RoundScoreInput: VFC<Props> = (props) => {
 
-  const {QualifyScore} = useContext(QualifyScoreContext)
-  const { Competition, RoundNumber, ScoreValueElement} = props
-  const {classEl,blockEl,roundEl}= ScoreValueElement
+  //const {teamDataList} = useContext(teamDataListContext)
+  const { Competition, RoundNumber } = props
   const classes = useStyles();
 
   //奇数行と偶数行で背景色を変更
   const InputRow = [classes.InputRowEven, classes.InputRowOdd];
 
-  
-  const [CompetitionValue0, setCompetitionValue0] = useState<CompetitionType>(Competition[0])
-  const [CompetitionValue1, setCompetitionValue1] = useState<CompetitionType>(Competition[1])
-  const [CompetitionValue2, setCompetitionValue2] = useState<CompetitionType>(Competition[2])
- // const { name1, point1, ma1, name2, point2, ma2 } = CompetitionValue
+  const score: CompetitionScoreType[] = []
+  for (let i = 0; i < 3; i++)
+    score.push(
+      {
+        name1: teamDataListInit[Competition[i].AteamId].name,
+        point1: teamDataListInit[Competition[i].AteamId].resultList[Competition[i].BteamId].number as number,
+        ma1: teamDataListInit[Competition[i].AteamId].resultList[Competition[i].BteamId].ma,
+        name2: teamDataListInit[Competition[i].BteamId].name,
+        point2: teamDataListInit[Competition[i].BteamId].resultList[Competition[i].AteamId].number as number,
+        ma2: teamDataListInit[Competition[i].BteamId].resultList[Competition[i].AteamId].ma,
+      })
 
- //子コンポーネントで変更された対戦スコアステートを変更する
-  const onChangeCompetitionScore0=(Competition:CompetitionType)=>{
-    setCompetitionValue0(Competition)
+  const [CompetitionScore0, setCompetitionScore0] = useState<CompetitionScoreType>(score[0])
+  const [CompetitionScore1, setCompetitionScore1] = useState<CompetitionScoreType>(score[1])
+  const [CompetitionScore2, setCompetitionScore2] = useState<CompetitionScoreType>(score[2])
+
+
+
+  // const { name1, point1, ma1, name2, point2, ma2 } = CompetitionScore
+
+  //子コンポーネントで変更された対戦スコアステートを変更する
+  const onChangeCompetitionScore0 = (Competition: CompetitionScoreType) => {
+    setCompetitionScore0(Competition)
   }
-  const onChangeCompetitionScore1=(Competition:CompetitionType)=>{
-    setCompetitionValue1(Competition)
+  const onChangeCompetitionScore1 = (Competition: CompetitionScoreType) => {
+    setCompetitionScore1(Competition)
   }
-  const onChangeCompetitionScore2=(Competition:CompetitionType)=>{
-    setCompetitionValue2(Competition)
+  const onChangeCompetitionScore2 = (Competition: CompetitionScoreType) => {
+    setCompetitionScore2(Competition)
   }
 
-  const onClickWriteScore: () => void=()=>{
-    QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition[0]=CompetitionValue0
-    QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition[1]=CompetitionValue1
-    QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition[2]=CompetitionValue2
-    console.log("QualifyScore:",QualifyScore[classEl]["Block"][blockEl]["Round"][roundEl].Competition)
+  const onClickWriteScore: () => void = () => {
+    const CompetitionScore = [{ ...CompetitionScore0 }, { ...CompetitionScore1 }, { ...CompetitionScore2 }]
+
+    // eslint-disable-next-line array-callback-return
+    CompetitionScore.map((score, index) => {
+      teamDataListInit[Competition[index].AteamId].resultList[Competition[index].BteamId].number = score.point1
+      teamDataListInit[Competition[index].BteamId].resultList[Competition[index].AteamId].number = score.point2
+      teamDataListInit[Competition[index].AteamId].resultList[Competition[index].BteamId].ma = score.ma1
+      teamDataListInit[Competition[index].BteamId].resultList[Competition[index].AteamId].ma = score.ma2
+      if (score.point1 > score.point2) {
+        teamDataListInit[Competition[index].AteamId].resultList[Competition[index].BteamId].win = true
+      } else {
+        teamDataListInit[Competition[index].BteamId].resultList[Competition[index].AteamId].win = true
+      }
+
+
+    })
+
   }
-/* 予選得点入力の1回戦から5回戦までのラウンドフォームを表示 */
+  /* 予選得点入力の1回戦から5回戦までのラウンドフォームを表示 */
   return (
     <>
       <Grid
@@ -114,15 +147,15 @@ export const RoundScoreInput: VFC<Props> = (props) => {
           <Grid item xs={3}>ま札</Grid>
         </Grid>
       </div>
-        <div className={InputRow[1]}>
-          <CompetitionScoreInput {...CompetitionValue0} onChangeCompetitionScore={onChangeCompetitionScore0}/>
-        </div>
-        <div className={InputRow[0]}>
-          <CompetitionScoreInput {...CompetitionValue1} onChangeCompetitionScore={onChangeCompetitionScore1}/>
-        </div>
-        <div className={InputRow[1]}>
-          <CompetitionScoreInput {...CompetitionValue2} onChangeCompetitionScore={onChangeCompetitionScore2}/>
-        </div>
+      <div className={InputRow[1]}>
+        <CompetitionScoreInput {...CompetitionScore0} onChangeCompetitionScore={onChangeCompetitionScore0} />
+      </div>
+      <div className={InputRow[0]}>
+        <CompetitionScoreInput {...CompetitionScore1} onChangeCompetitionScore={onChangeCompetitionScore1} />
+      </div>
+      <div className={InputRow[1]}>
+        <CompetitionScoreInput {...CompetitionScore2} onChangeCompetitionScore={onChangeCompetitionScore2} />
+      </div>
 
     </>
   );

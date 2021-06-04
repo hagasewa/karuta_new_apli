@@ -13,12 +13,12 @@ import {  useHistory } from "react-router-dom";
 import { useGoogleAuthLogout } from "../../fooks/useGoogleAuthLogout";
 
 //フルパスのドメインを取得
-const getDmainPath =()=>{
+/* const getDmainPath =()=>{
   const fullPath=window.location.href
   const locationPath=window.location.pathname
   const indexPath= fullPath.indexOf(locationPath)
   return fullPath.slice(0,indexPath)
-}
+} */
 
 export const MainListItems = () => {
   const logout = useGoogleAuthLogout()
@@ -28,7 +28,7 @@ export const MainListItems = () => {
     history.push(url);
   };
 
-  const dmainPath=getDmainPath();
+  /* const dmainPath=getDmainPath(); */
   return (
     <div>
       <ListItem
@@ -54,7 +54,11 @@ export const MainListItems = () => {
         <ListItemText primary="決勝得点入力" />
       </ListItem>{/* 
       <Link to="/score" target="_blank"> */}
-        <ListItem button onClick={()=>{window.open(`${dmainPath}/score`)}}>
+
+        {/* 本来は別のウィンドウに表示するが、firebaseから呼びなおさないとデータが反映されない
+            現在はオミット
+         <ListItem button onClick={()=>{window.open(`${dmainPath}/score`)}}> */}
+        <ListItem button onClick={()=>{onClickRouterPush("/score");}}>
           <ListItemIcon>
             <GridOnIcon />
           </ListItemIcon>
