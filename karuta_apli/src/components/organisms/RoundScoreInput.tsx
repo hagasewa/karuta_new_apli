@@ -8,52 +8,12 @@ import {
   Typography,
 } from "@material-ui/core";
 import { useState, VFC } from "react";
-import { CompetitionType, ScoreValueElementType, teamDataListInit } from "../../Providers/QualifyScoreInit";
+import { CompetitionType, teamDataListInit } from "../../Providers/QualifyScoreInit";
 import { CompetitionScoreInput } from "../molecules/CompetitionScoreInput";
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    header: {
-      background: theme.palette.primary.dark,
-      color: "#FFF",
-      padding: "10px ",
-    },
-    subheader: {
-      background: theme.palette.primary.light,
-      color: theme.palette.text.secondary,
-      padding: "10px ",
-    },
-    input: {
-      padding: "5px",
-      width: 50,
-      height: 20,
-      border: "2px solid #333",
-      borderRadius: "3px",
-    },
-    Card: {
-      minWidth: 420,
-    },
-    InputRowEven: {
-      background: "#F0F0F0",
-      padding: "0px 10px",
-    },
-    InputRowOdd: {
-      padding: "0px 10px",
-    },
-    roundBox: {
-      maxWidth: 300,
-    },
-
-    EntryButton: {
-      height: 20,
-    },
-  })
-);
 
 type Props = {
   Competition: CompetitionType[];
   RoundNumber: string;
-  ScoreValueElement: ScoreValueElementType
 }
 
 export type CompetitionScoreType = {
@@ -73,9 +33,10 @@ export const RoundScoreInput: VFC<Props> = (props) => {
   //奇数行と偶数行で背景色を変更
   const InputRow = [classes.InputRowEven, classes.InputRowOdd];
 
+  //useStateに渡す初期値socreを作成
   const score: CompetitionScoreType[] = []
   for (let i = 0; i < 3; i++)
-    score.push(
+      score.push(
       {
         name1: teamDataListInit[Competition[i].AteamId].name,
         point1: teamDataListInit[Competition[i].AteamId].resultList[Competition[i].BteamId].number as number,
@@ -85,15 +46,15 @@ export const RoundScoreInput: VFC<Props> = (props) => {
         ma2: teamDataListInit[Competition[i].BteamId].resultList[Competition[i].AteamId].ma,
       })
 
+  //試合データ入力に利用するstateを作成
+  //これをもう少しロジカルにしたい　配列なりにまとめることが出来ればいいが、setStateがどうなるのかわからん
   const [CompetitionScore0, setCompetitionScore0] = useState<CompetitionScoreType>(score[0])
   const [CompetitionScore1, setCompetitionScore1] = useState<CompetitionScoreType>(score[1])
   const [CompetitionScore2, setCompetitionScore2] = useState<CompetitionScoreType>(score[2])
 
 
-
-  // const { name1, point1, ma1, name2, point2, ma2 } = CompetitionScore
-
-  //子コンポーネントで変更された対戦スコアステートを変更する
+  //子コンポーネントのinnput等で値が変更されると対戦スコアステートを変更する
+  //なんか無駄がある気がする
   const onChangeCompetitionScore0 = (Competition: CompetitionScoreType) => {
     setCompetitionScore0(Competition)
   }
@@ -104,6 +65,7 @@ export const RoundScoreInput: VFC<Props> = (props) => {
     setCompetitionScore2(Competition)
   }
 
+  /* 登録ボタンが押されると、ｎ回戦のデータをteamDataListに記録する　ま札についてはオミットした */
   const onClickWriteScore: () => void = () => {
     const CompetitionScore = [{ ...CompetitionScore0 }, { ...CompetitionScore1 }, { ...CompetitionScore2 }]
 
@@ -160,3 +122,44 @@ export const RoundScoreInput: VFC<Props> = (props) => {
     </>
   );
 };
+
+
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    header: {
+      background: theme.palette.primary.dark,
+      color: "#FFF",
+      padding: "10px ",
+    },
+    subheader: {
+      background: theme.palette.primary.light,
+      color: theme.palette.text.secondary,
+      padding: "10px ",
+    },
+    input: {
+      padding: "5px",
+      width: 50,
+      height: 20,
+      border: "2px solid #333",
+      borderRadius: "3px",
+    },
+    Card: {
+      minWidth: 420,
+    },
+    InputRowEven: {
+      background: "#F0F0F0",
+      padding: "0px 10px",
+    },
+    InputRowOdd: {
+      padding: "0px 10px",
+    },
+    roundBox: {
+      maxWidth: 300,
+    },
+
+    EntryButton: {
+      height: 20,
+    },
+  })
+);

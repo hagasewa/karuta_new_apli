@@ -11,7 +11,7 @@ export const QualifyScoreInput = () => {
   return (
     <>
       {HighSchooleteam.Block.map((block,index) => (
-        <QualifyScoreInputCard {...block} key={index} ScoreValueElement={{classEl:0,blockEl:index,round:0}}/>
+        <QualifyScoreInputCard {...block} />
       ))}
     </>
   );

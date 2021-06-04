@@ -1,11 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
 import { useGoogleAuthLogin } from "../../fooks/useGoogleAuthLogin";
-const useStyles = makeStyles((theme) => ({
-  img: {
-    marginTop: 20,
-  },
-}));
 
 
 export const GoogleAuth = () => {
@@ -25,3 +20,9 @@ export const GoogleAuth = () => {
     </>
   );
 };
+
+const useStyles = makeStyles((theme) => ({
+  img: {
+    marginTop: 20,
+  },
+}));

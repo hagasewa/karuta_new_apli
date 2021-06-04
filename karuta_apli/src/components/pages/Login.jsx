@@ -1,31 +1,6 @@
 import { Button, Grid, makeStyles, Paper, TextField, Typography } from "@material-ui/core";
 import { GoogleAuth } from "../molecules/GoogleAuth";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    width: 300,
-    height: 300,
-    marginTop:200,
-
-  },
-  header:{
-    background:theme.palette.primary.main,
-    color:"white",
-    textAlign:"center",
-    padding:10,
-  },
-  textfield:{
-    width:240,
-    marginTop:10
-  },
-  button:{
-    width:240,
-    marginTop:10
-  },
-  img:{
-    marginTop:20
-  }
-}));
 export const Login = () => {
   const classes = useStyles();
   return (
@@ -54,3 +29,31 @@ export const Login = () => {
     </>
   );
 };
+
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    width: 300,
+    height: 300,
+    marginTop:200,
+
+  },
+  header:{
+    background:theme.palette.primary.main,
+    color:"white",
+    textAlign:"center",
+    padding:10,
+  },
+  textfield:{
+    width:240,
+    marginTop:10
+  },
+  button:{
+    width:240,
+    marginTop:10
+  },
+  img:{
+    marginTop:20
+  }
+}));

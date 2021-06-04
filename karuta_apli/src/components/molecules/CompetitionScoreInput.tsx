@@ -11,21 +11,9 @@ type Props = {
   name2: string;
   point2: number;
   ma2: boolean;
-  onChangeCompetitionScore:(Competition: CompetitionScoreType) => void;
-
-
+  onChangeCompetitionScore:(Competition: CompetitionScoreType) => void; //入力データのsetStateを更新する
 }
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    input: {
-      padding: '5px',
-      width: 50,
-      height: 20,
-      border: "2px solid #333",
-      borderRadius: "3px",
-    }
-  }))
 export const CompetitionScoreInput: VFC<Props> = (props) => {
   const { name1, point1, ma1, name2, point2, ma2, onChangeCompetitionScore } = props
   const classes = useStyles()
@@ -58,3 +46,14 @@ export const CompetitionScoreInput: VFC<Props> = (props) => {
     </>
   )
 }
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    input: {
+      padding: '5px',
+      width: 50,
+      height: 20,
+      border: "2px solid #333",
+      borderRadius: "3px",
+    }
+  }))

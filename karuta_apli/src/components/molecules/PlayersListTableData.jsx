@@ -1,14 +1,6 @@
-import { makeStyles } from "@material-ui/core"
+/* 選手一覧ページ */
 
-const useStyles = makeStyles({
-  tableCell:{
-   padding: "5px 10px",
-   marginTop: "auto",
-   textAlign: "center",
-   border: "1px solid #666",
-   fontSize: 12
- }
-})
+import { makeStyles } from "@material-ui/core"
 
 export const PlayersListTableData=(props)=>{
   const {  school,team,block,
@@ -22,6 +14,7 @@ export const PlayersListTableData=(props)=>{
     
   return (
     <>
+    {/* ここをループで回したい */}
     <td className={classes.tableCell}>{school}</td>
     <td className={classes.tableCell}>{team}</td>
     <td className={classes.tableCell}>{block}</td>
@@ -44,3 +37,14 @@ export const PlayersListTableData=(props)=>{
     </>
   )
 }
+
+
+const useStyles = makeStyles({
+  tableCell:{
+   padding: "5px 10px",
+   marginTop: "auto",
+   textAlign: "center",
+   border: "1px solid #666",
+   fontSize: 12
+ }
+})

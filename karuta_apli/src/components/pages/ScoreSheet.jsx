@@ -9,43 +9,6 @@ import { Tournament } from "../organisms/Tournament";
 import { RoundUpTable } from "../organisms/RoundUpTable";
 
 
-const useStyles = makeStyles({
-
-  //ヘッダーCSS
-  header: {
-    background: '#007BBB',
-    color: "#FFF",
-    padding: "10px "
-  },
-  headermenu: {
-    background: '#BCE2E8',
-  },
-  activeheademenu: {
-    background: '#0095D9',
-    color: "snow",
-    paddingTop: "5px",
-    paddingBottom: "5px"
-  },
-  InputButton: {
-    padding: "0px 10px"
-  },
-  InputBase: {
-    marginLeft: "15px",
-    width: "100px",
-    background: 'snow',
-  },
-
-  SwitchOn: {
-    background: '#0095D9',
-    padding: "0px 16px",
-  },
-  SwitchOff: {
-    background: 'snow',
-    padding: "0px 16px",
-    color: "#333",
-  }
-});
-
 export const ScoreSheet = () => {
   const classes = useStyles();
   return (
@@ -104,3 +67,41 @@ export const ScoreSheet = () => {
     </>
   )
 }
+
+
+const useStyles = makeStyles({
+
+  //ヘッダーCSS
+  header: {
+    background: '#007BBB',
+    color: "#FFF",
+    padding: "10px "
+  },
+  headermenu: {
+    background: '#BCE2E8',
+  },
+  activeheademenu: {
+    background: '#0095D9',
+    color: "snow",
+    paddingTop: "5px",
+    paddingBottom: "5px"
+  },
+  InputButton: {
+    padding: "0px 10px"
+  },
+  InputBase: {
+    marginLeft: "15px",
+    width: "100px",
+    background: 'snow',
+  },
+
+  SwitchOn: {
+    background: '#0095D9',
+    padding: "0px 16px",
+  },
+  SwitchOff: {
+    background: 'snow',
+    padding: "0px 16px",
+    color: "#333",
+  }
+});

@@ -1,32 +1,31 @@
+
+
+//対戦相手
 export type CompetitionType = {
   AteamId: string;
   BteamId: string;
 }
 
+//ｎ回戦
 export type RoundType = {
   RoundNumber: string;
   Competition: CompetitionType[];
 }
-
+//ブロック　Ａブロック、Ｂブロック
 export type BlockType = {
   BlockName: string;
   BlockTeamIds: string[]
   Round: RoundType[];
 }
 
+//クラス　高学年団体　など
 export type ClassType = {
   ClassName: string;
   Block: BlockType[]
 }
 
+//上記のデータを配列型で収めている型
 export type QualifyPlayingFieldType = ClassType[];
-
-export type ScoreValueElementType = {
-  classEl: number;
-  blockEl: number;
-  roundEl: number;
-}
-
 
 export const QualifyPlayingField: QualifyPlayingFieldType = [{
   ClassName: "高学年団体",
@@ -120,27 +119,32 @@ export const QualifyPlayingField: QualifyPlayingFieldType = [{
 }
 ]
 
+
+//対戦相手との取得点とま札の有無、勝敗
 export type resultType = {
   number: number | '-';
   ma: boolean;
   win:boolean;
 }
+
+//対戦結果を対戦相手のIDをKeyにしたオブジェクト 
 export type resultListType = {
   [key: string]: resultType;
 
 }
 
-
+//チーム情報　名前と対戦結果
 export type teamType = {
   name: string;
   resultList: resultListType
 }
 
+//全てのチームのIDをkeyとしたオブジェクト
 export type teamDataListType = {
   [key: string]: teamType
 }
 
-
+//チーム情報の入ったオブジェクト、こちらはチームIDをKeyとして管理している
 export const teamDataListInit: teamDataListType = {
   f8h3z9yx: {
     name: "西富A",

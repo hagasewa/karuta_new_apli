@@ -21,49 +21,9 @@ type rowsType = {
   rank: number
 }
 
-
-
-
-const useStyles = makeStyles({
-  header: {
-    background: '#007BBB',
-    color: "#FFF",
-    padding: "10px "
-  },
-
-  //対戦表CSS
-  writingMode: {
-    writingMode: "vertical-rl",
-    textOrientation: "upright",
-    margin: "auto"
-  },
-  table: {
-    margin: "10px auto",
-    borderCollapse: "collapse",
-  },
-  tableCell: {
-    width: 28,
-    padding: "5px 0",
-    marginTop: "auto",
-    textAlign: "center",
-    border: "1px solid #666",
-    fontSize: 12
-  },
-  TalbeCard:
-  {
-    marginTop: 20,
-    paddingBottom: 10,
-    paddingLeft: 0,
-    paddingRight: 0,
-    width: 320,
-    borderRadius: 20,
-    background: "#BCE2E8"
-  }
-})
-
 export const RoundUpTable: VFC = () => {
-  //const {QualifyScore} = useContext(teamDataListContext)
-  //対戦表の名前と順番を取得　BlockTeamIds
+
+  //対戦表の名前と順番を取得　BlockTeamIds：
   const BlockTeamIds: string[] = QualifyPlayingField[0].Block[0].BlockTeamIds
 
   const nameA = teamDataListInit[BlockTeamIds[0]].name
@@ -74,11 +34,12 @@ export const RoundUpTable: VFC = () => {
   const nameF = teamDataListInit[BlockTeamIds[5]].name
   const rows: rowsType[] = []
 
-
-
+  /* 対戦表結果を対戦表に反映する処理 */
   for (let i = 0; i < BlockTeamIds.length; i++) {
     let win=0
     let total=0
+
+    /* 勝ち数と総取得枚数をカウント */
     for(let j=0;j<BlockTeamIds.length;j++){
       if(teamDataListInit[BlockTeamIds[i]].resultList[BlockTeamIds[j]].win)
         win++
@@ -86,6 +47,7 @@ export const RoundUpTable: VFC = () => {
         total += teamDataListInit[BlockTeamIds[i]].resultList[BlockTeamIds[j]].number as number
     }
     
+    /* 各試合結果と総合点などをテーブル用のデータに代入 */
     rows[i] = (createData(
       teamDataListInit[BlockTeamIds[i]].name,
       teamDataListInit[BlockTeamIds[i]].resultList[BlockTeamIds[0]].number,
@@ -99,14 +61,6 @@ export const RoundUpTable: VFC = () => {
       1
     ))
   }
-  /*   const rows = [  //西富A  伸栄A 若松E  牛沼C 北秋津C  小手指E
-      createData(nameA, '-', Round[0].Competition[0].point1, Round[1].Competition[0].point1, Round[2].Competition[0].point1, Round[3].Competition[0].point1, Round[4].Competition[0].point1, 3, 150, 2),
-      createData(nameB, Round[0].Competition[0].point2, '-', Round[4].Competition[1].point1, Round[3].Competition[1].point1, Round[1].Competition[1].point1, Round[2].Competition[1].point1, 3, 150, 2),
-      createData(nameC, Round[1].Competition[0].point2, Round[4].Competition[1].point2, '-', Round[0].Competition[1].point1, Round[2].Competition[2].point1, Round[3].Competition[2].point1, 3, 150, 2),
-      createData(nameD, Round[2].Competition[0].point2, Round[3].Competition[1].point2, Round[0].Competition[1].point2, '-', Round[4].Competition[2].point1, Round[1].Competition[2].point1, 3, 150, 2),
-      createData(nameE, Round[3].Competition[0].point2, Round[1].Competition[1].point2, Round[2].Competition[2].point2, Round[4].Competition[1].point2, '-', Round[0].Competition[2].point1, 3, 150, 2),
-      createData(nameF, Round[4].Competition[0].point2, Round[2].Competition[1].point2, Round[3].Competition[2].point2, Round[1].Competition[2].point2, Round[0].Competition[2].point2, '-', 3, 150, 2),
-    ] */
 
 
   const classes = useStyles();
@@ -150,3 +104,41 @@ export const RoundUpTable: VFC = () => {
 
   )
 }
+
+
+const useStyles = makeStyles({
+  header: {
+    background: '#007BBB',
+    color: "#FFF",
+    padding: "10px "
+  },
+
+  //対戦表CSS
+  writingMode: {
+    writingMode: "vertical-rl",
+    textOrientation: "upright",
+    margin: "auto"
+  },
+  table: {
+    margin: "10px auto",
+    borderCollapse: "collapse",
+  },
+  tableCell: {
+    width: 28,
+    padding: "5px 0",
+    marginTop: "auto",
+    textAlign: "center",
+    border: "1px solid #666",
+    fontSize: 12
+  },
+  TalbeCard:
+  {
+    marginTop: 20,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    paddingRight: 0,
+    width: 320,
+    borderRadius: 20,
+    background: "#BCE2E8"
+  }
+})

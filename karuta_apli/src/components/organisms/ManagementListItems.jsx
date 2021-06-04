@@ -20,6 +20,7 @@ import { useGoogleAuthLogout } from "../../fooks/useGoogleAuthLogout";
   return fullPath.slice(0,indexPath)
 } */
 
+
 export const MainListItems = () => {
   const logout = useGoogleAuthLogout()
   let history = useHistory();
